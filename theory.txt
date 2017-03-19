@@ -1,0 +1,68 @@
+cURL("Client URLs") и libcurl - библиотеки, позволяющие серверу передавать файлы на удаленный компьютер,
+используя множество Интернет протоколов.
+Библиотеки имеют очень гибкую настройку и позволяют выполнить практически любой удаленный запрос.
+Используя их, web-сервер может выступать полноценным клиентом любого основанного на HTTP протоколе сервисе,
+к примеру: XML-RPC, SOAP, или WebDAV.
+
+cURL первоначально был разработан как утилита коммандной строки.
+Libcurl - переносимая библиотека, предоставляющая простой API-интерфейс к функциональности cURL.
+
+Схема использования:
+1. curl_init() - Инициализирует новый сеанс cURL и возвращает дескриптор,
+который используется с функциями curl_setopt(), curl_exec() и curl_close().
+
+resource curl_init ([ string $url = NULL ] )
+$url - Если указан, опция CURLOPT_URL будет автоматически установлена в значение этого аргумента
+
+2. curl_setopt(), curl_setopt_array() - Устанавливает параметр для указанного сеанса cURL.
+
+bool curl_setopt ( resource $ch , int $option , mixed $value )
+bool curl_setopt_array ( resource $ch , array $options )
+
+Список параметров:
+ - ch - Дескриптор cURL, полученный из curl_init().
+ - option - Устанавливаемый параметр CURLOPT_XXX.
+ - value - Значение параметра option.
+
+3. curl_exec() — Выполняет запрос cURL
+
+mixed curl_exec ( resource $ch )
+
+4. curl_close()
+
+void curl_close ( resource $ch )
+Завершает сеанс cURL и освобождает все ресурсы. Дескриптор ch также уничтожается.
+
+
+Используемые опции:
+
+CURLOPT_URL - Загружаемый URL.
+Данный параметр может быть также установлен при инициализации сеанса с помощью curl_init().
+
+CURLOPT_POST - TRUE для использования обычного HTTP POST
+
+CURLOPT_RETURNTRANSFER - TRUE для возврата результата передачи в качестве строки из curl_exec() вместо прямого вывода в браузер.
+
+CURLOPT_FILE - Файл, в который будет записан результат передачи.
+По умолчанию используется поток вывода STDOUT (окно браузера).
+
+CURLOPT_POSTFIELDS - Все данные, передаваемые в HTTP POST-запросе.
+
+CURLOPT_HEADER - TRUE для включения заголовков в вывод.
+
+CURLOPT_FTPLISTONLY - TRUE для возврата только списка имен из FTP директории.
+
+CURLOPT_USERPWD - Логин и пароль, используемые при соединении, указанные в формате "[username]:[password]".
+
+CURLOPT_VERBOSE - TRUE для вывода дополнительной информации.
+Записывает вывод в поток STDERR, или файл, указанный параметром CURLOPT_STDERR.
+
+CURLOPT_STDERR - Альтернативное файл для вывода ошибок, используемый вместо потока ошибок STDERR.
+
+CURLOPT_FOLLOWLOCATION	- TRUE для следования любому заголовку "Location: ", отправленному сервером в своем ответе
+
+Документация: http://php.net/manual/ru/book.curl.php
+Примеры: http://www.hackingwithphp.com/15/10/2/your-first-curl-scripts
+Все опции: http://php.net/manual/ru/function.curl-setopt.php
+Часто используемые опции curl_setopt: http://www.hackingwithphp.com/15/10/3/the-abridged-list-of-curl-options
+Пример отладки в cURL: http://www.hackingwithphp.com/15/10/4/debugging-curl
