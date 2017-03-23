@@ -66,3 +66,7 @@ CURLOPT_FOLLOWLOCATION	- TRUE для следования любому заго�
 Все опции: http://php.net/manual/ru/function.curl-setopt.php
 Часто используемые опции curl_setopt: http://www.hackingwithphp.com/15/10/3/the-abridged-list-of-curl-options
 Пример отладки в cURL: http://www.hackingwithphp.com/15/10/4/debugging-curl
+Zebra CURL:
+http://stefangabos.ro/php-libraries/zebra-curl/
+http://stefangabos.ro/wp-content/docs/Zebra_cURL/Zebra_cURL/Zebra_cURL.html#methoddownload
+https://github.com/stefangabos/Zebra_cURL
